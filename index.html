@@ -1,203 +1,1411 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Resume - Hongkham Suvannavong</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Orbitron', sans-serif;
-    }
-    body {
-      background: #000;
-      color: #ff4d6d;
-      padding: 20px;
-      line-height: 1.6;
-      animation: fadeIn 1s ease-in;
-      position: relative;
-    }
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      background: radial-gradient(#ff1a4d 1px, transparent 1px);
-      background-size: 40px 40px;
-      opacity: 0.05;
-      z-index: 0;
-      animation: gridMove 20s linear infinite;
-    }
-    @keyframes gridMove {
-      from { background-position: 0 0; }
-      to { background-position: 40px 40px; }
-    }
-    header, section {
-      position: relative;
-      z-index: 1;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-    header h1 {
-      font-size: 3rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: #ff1a4d;
-      animation: flicker 3s infinite;
-    }
-    @keyframes flicker {
-      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-        text-shadow: 0 0 5px #ff1a4d, 0 0 10px #ff1a4d, 0 0 20px #ff1a4d;
-      }
-      20%, 24%, 55% {
-        text-shadow: none;
-      }
-    }
-    .profile-pic {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 4px solid #ff1a4d;
-      margin: 10px auto;
-      display: block;
-      object-fit: cover;
-      box-shadow: 0 0 20px rgba(255, 26, 77, 0.8);
-      animation: glow 2s ease-in-out infinite alternate;
-    }
-    @keyframes glow {
-      from { box-shadow: 0 0 10px #ff1a4d; }
-      to { box-shadow: 0 0 30px #ff1a4d; }
-    }
-    section {
-      background-color: rgba(255, 77, 109, 0.05);
-      border-left: 4px solid #ff1a4d;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-      transition: transform 0.3s ease;
-    }
-    section:hover {
-      transform: scale(1.02);
-    }
-    h2 {
-      border-bottom: 2px solid #ff1a4d;
-      margin-bottom: 10px;
-      padding-bottom: 5px;
-      color: #ff1a4d;
-    }
-    ul {
-      list-style-type: none;
-    }
-    ul li::before {
-      content: '\f111';
-      font-family: 'Font Awesome 6 Free';
-      font-weight: 900;
-      margin-right: 10px;
-      color: #ff4d6d;
-    }
-    .skills-bar {
-      background: #300014;
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-    .skills-bar span {
-      display: block;
-      height: 18px;
-      background: #ff1a4d;
-      animation: fillBar 1.5s ease-out;
-    }
-    p i {
-      margin-right: 10px;
-      color: #ff4d6d;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    @keyframes fillBar {
-      from { width: 0%; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hongkham Suvannavong (Ama) - Portfolio</title>
+    
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --accent-color: #f093fb;
+            --dark-color: #2d3748;
+            --light-color: #f7fafc;
+            --text-color: #4a5568;
+            --border-color: #e2e8f0;
+            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-heavy: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            overflow-x: hidden;
+        }
+
+        .heading-font {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--text-color) !important;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background: var(--gradient-primary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%23ffffff08" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .lead {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+        }
+
+        .btn-hero {
+            background: var(--gradient-secondary);
+            border: none;
+            padding: 15px 40px;
+            font-weight: 600;
+            border-radius: 50px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .btn-hero:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-heavy);
+            color: white;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: fixed;
+            top: 100px;
+            right: 30px;
+            z-index: 1000;
+            background: white;
+            border-radius: 15px;
+            padding: 10px;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .language-switcher .btn {
+            border: none;
+            background: transparent;
+            padding: 8px 12px;
+            margin: 2px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .language-switcher .btn.active {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        .language-switcher .btn:hover {
+            background: var(--gradient-primary);
+            color: white;
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 3rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Cards */
+        .card-modern {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-light);
+            border: none;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .card-modern:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills */
+        .skill-item {
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            box-shadow: var(--shadow-light);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateX(10px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .skill-progress {
+            height: 8px;
+            border-radius: 10px;
+            background: var(--border-color);
+            overflow: hidden;
+            margin-top: 0.5rem;
+        }
+
+        .skill-progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background: var(--gradient-primary);
+            transition: width 2s ease;
+        }
+
+        /* Portfolio */
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--gradient-primary);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 0.9;
+        }
+
+        .portfolio-content {
+            padding: 2rem;
+        }
+
+        /* Contact Form */
+        .form-control {
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            padding: 15px 20px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            border: none;
+            padding: 15px 40px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .lead {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .language-switcher {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 20px auto;
+                display: flex;
+                justify-content: center;
+            }
+        }
+
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: var(--shadow-medium);
+        }
+
+        .dark-mode-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Language content visibility */
+        [data-lang] {
+            display: none;
+        }
+
+        [data-lang="en"] {
+            display: block;
+        }
+
+        .lang-en [data-lang="en"] { display: block; }
+        .lang-en [data-lang="th"] { display: none; }
+        .lang-en [data-lang="la"] { display: none; }
+
+        .lang-th [data-lang="en"] { display: none; }
+        .lang-th [data-lang="th"] { display: block; }
+        .lang-th [data-lang="la"] { display: none; }
+
+        .lang-la [data-lang="en"] { display: none; }
+        .lang-la [data-lang="th"] { display: none; }
+        .lang-la [data-lang="la"] { display: block; }
+    </style>
 </head>
-<body>
-  <audio autoplay loop hidden>
-    <source src="https://freesound.org/data/previews/264/264981_5002960-lq.mp3" type="audio/mpeg">
-  </audio>
+<body class="lang-en">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand heading-font" href="#home">Ama</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home" data-lang="en">Home</a>
+                        <a class="nav-link" href="#home" data-lang="th">หน้าแรก</a>
+                        <a class="nav-link" href="#home" data-lang="la">ໜ້າຫຼັກ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about" data-lang="en">About</a>
+                        <a class="nav-link" href="#about" data-lang="th">เกี่ยวกับ</a>
+                        <a class="nav-link" href="#about" data-lang="la">ກ່ຽວກັບ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills" data-lang="en">Skills</a>
+                        <a class="nav-link" href="#skills" data-lang="th">ทักษะ</a>
+                        <a class="nav-link" href="#skills" data-lang="la">ທັກສະ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#certifications" data-lang="en">Certifications</a>
+                        <a class="nav-link" href="#certifications" data-lang="th">ใบรับรอง</a>
+                        <a class="nav-link" href="#certifications" data-lang="la">ໃບຢືນຢັນ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio" data-lang="en">Portfolio</a>
+                        <a class="nav-link" href="#portfolio" data-lang="th">ผลงาน</a>
+                        <a class="nav-link" href="#portfolio" data-lang="la">ຜົນງານ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact" data-lang="en">Contact</a>
+                        <a class="nav-link" href="#contact" data-lang="th">ติดต่อ</a>
+                        <a class="nav-link" href="#contact" data-lang="la">ຕິດຕໍ່</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
-  <header>
-    <img src="IMG_20240215_172010OK.jpg" alt="Profile Photo" class="profile-pic">
-    <h1>Hongkham Suvannavong</h1>
-    <p><i class="fas fa-laptop-code"></i>IT Support | <i class="fas fa-shield-alt"></i>Admin Safety | <i class="fas fa-chalkboard-teacher"></i>Training | <i class="fas fa-user-shield"></i>Safety Officer</p>
-  </header>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="btn active" onclick="switchLanguage('en')">EN</button>
+        <button class="btn" onclick="switchLanguage('th')">TH</button>
+        <button class="btn" onclick="switchLanguage('la')">LA</button>
+    </div>
 
-  <section>
-    <h2><i class="fas fa-address-book"></i> Contact Details</h2>
-    <ul>
-      <li><i class="fas fa-envelope"></i> hongkham.svnv@outlook.com</li>
-      <li><i class="fas fa-phone"></i> +856 20 58855817</li>
-      <li><i class="fas fa-map-marker-alt"></i> Vientiane Capital</li>
-    </ul>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content" data-aos="fade-right">
+                        <h1 class="heading-font" data-lang="en">Hongkham Suvannavong</h1>
+                        <h1 class="heading-font" data-lang="th">หงษ์คำ สุวรรณวงศ์</h1>
+                        <h1 class="heading-font" data-lang="la">ຫົງຄຳ ສຸວັນນະວົງ</h1>
+                        
+                        <p class="lead" data-lang="en">IT Specialist & Digital Solutions Expert</p>
+                        <p class="lead" data-lang="th">ผู้เชี่ยวชาญด้าน IT และโซลูชันดิจิทัล</p>
+                        <p class="lead" data-lang="la">ຜູ້ຊ່ຽວຊານດ້ານໄອທີ ແລະ ໂຊລູຊັນດິຈິຕອນ</p>
+                        
+                        <a href="#contact" class="btn-hero" data-lang="en">Get In Touch</a>
+                        <a href="#contact" class="btn-hero" data-lang="th">ติดต่อเรา</a>
+                        <a href="#contact" class="btn-hero" data-lang="la">ຕິດຕໍ່ພວກເຮົາ</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center" data-aos="fade-left">
+                        <div class="floating">
+                            <i class="fas fa-laptop-code" style="font-size: 15rem; color: rgba(255,255,255,0.2);"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2><i class="fas fa-id-card"></i> Personal Details</h2>
-    <ul>
-      <li>Date of Birth: 11/07/1989</li>
-      <li>Place of Birth: Nonsavanh, Saysetha District, Vientiane, Laos</li>
-      <li>Gender: Male</li>
-    </ul>
-  </section>
 
-  <section>
-    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
-    <ul>
-      <li>1996-2001: Amorn School</li>
-      <li>2001-2004: Nongnieng Secondary School</li>
-      <li>2004-2007: Nonsavang High School</li>
-      <li>2007-2012: National University of Laos</li>
-    </ul>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="en">About Me</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="th">เกี่ยวกับฉัน</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="la">ກ່ຽວກັບຂ້ອຍ</h2>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card-modern">
+                        <h3 class="heading-font mb-4" data-lang="en">Personal Details</h3>
+                        <h3 class="heading-font mb-4" data-lang="th">ข้อมูลส่วนตัว</h3>
+                        <h3 class="heading-font mb-4" data-lang="la">ຂໍ້ມູນສ່ວນຕົວ</h3>
+                        
+                        <div class="row" data-lang="en">
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-user me-2 text-primary"></i>Full Name:</strong><br>
+                                Hongkham Suvannavong
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-smile-beam me-2 text-success"></i>Nickname:</strong><br>
+                                Ama
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-birthday-cake me-2 text-danger"></i>Birthday:</strong><br>
+                                11 July 1989
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-flag me-2 text-warning"></i>Nationality:</strong><br>
+                                Lao
+                            </div>
+                            <div class="col-12 mb-3">
+                                <strong><i class="fas fa-map-marker-alt me-2 text-info"></i>Location:</strong><br>
+                                Vientiane Capital, Laos
+                            </div>
+                        </div>
+                        
+                        <div class="row" data-lang="th">
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-user me-2 text-primary"></i>ชื่อจริง:</strong><br>
+                                หงษ์คำ สุวรรณวงศ์
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-smile-beam me-2 text-success"></i>ชื่อเล่น:</strong><br>
+                                อาร์มา
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-birthday-cake me-2 text-danger"></i>วันเกิด:</strong><br>
+                                5 พฤษภาคม 1987
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-flag me-2 text-warning"></i>สัญชาติ:</strong><br>
+                                ลาว
+                            </div>
+                            <div class="col-12 mb-3">
+                                <strong><i class="fas fa-map-marker-alt me-2 text-info"></i>ที่อยู่:</strong><br>
+                                เวียงจันทน์, ลาว
+                            </div>
+                        </div>
+                        
+                        <div class="row" data-lang="la">
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-user me-2 text-primary"></i>ຊື່ແທ້:</strong><br>
+                                ຫົງຄຳ ສຸວັນນະວົງ
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-smile-beam me-2 text-success"></i>ຊື່ຫຼິ້ນ:</strong><br>
+                                ອາຣ໌ມາ
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-birthday-cake me-2 text-danger"></i>ເກີດວັນທີ:</strong><br>
+                                5 ເດືອນ 5 1987
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong><i class="fas fa-flag me-2 text-warning"></i>ສັນຊາດ:</strong><br>
+                                ລາວ
+                            </div>
+                            <div class="col-12 mb-3">
+                                <strong><i class="fas fa-map-marker-alt me-2 text-info"></i>ທີ່ຢູ່:</strong><br>
+                                ເມືອງວຽງຈັນ, ປະເທດລາວ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card-modern">
+                        <h3 class="heading-font mb-4" data-lang="en">Professional Summary</h3>
+                        <h3 class="heading-font mb-4" data-lang="th">สรุปประสบการณ์</h3>
+                        <h3 class="heading-font mb-4" data-lang="la">ສະຫຼຸບປະສົບການ</h3>
+                        
+                        <p data-lang="en">
+                            Experienced IT Specialist with over 10 years in database development, system administration, 
+                            and technical training. Proven track record in implementing IT solutions across 18 provinces 
+                            in Laos, with expertise in safety management and digital transformation.
+                        </p>
+                        
+                        <p data-lang="th">
+                            ผู้เชี่ยวชาญด้าน IT ที่มีประสบการณ์กว่า 10 ปี ในการพัฒนาฐานข้อมูล การบริหารระบบ 
+                            และการฝึกอบรมทางเทคนิค มีผลงานในการนำระบบ IT ไปใช้ใน 18 แขวงทั่วประเทศลาว 
+                            พร้อมความเชี่ยวชาญด้านการจัดการความปลอดภัยและการเปลี่ยนแปลงดิจิทัล
+                        </p>
+                        
+                        <p data-lang="la">
+                            ຜູ້ຊ່ຽວຊານດ້ານໄອທີທີ່ມີປະສົບການຫຼາຍກວ່າ 10 ປີ ໃນການພັດທະນາຖານຂໍ້ມູນ ການບໍລິຫານລະບົບ 
+                            ແລະການຝຶກອົບຮົມທາງເຕັກນິກ ມີຜົນງານໃນການນໍາລະບົບໄອທີໄປໃຊ້ໃນ 18 ແຂວງທົ່ວປະເທດລາວ 
+                            ພ້ອມຄວາມຊ່ຽວຊານດ້ານການຈັດການຄວາມປອດໄພແລະການປ່ຽນແປງດິຈິຕອນ
+                        </p>
+                        
+                        <div class="row mt-4">
+                            <div class="col-6 text-center">
+                                <div class="card-icon mx-auto" style="background: var(--gradient-primary);">
+                                    <i class="fas fa-calendar-alt"></i>
+                                </div>
+                                <h4>10+</h4>
+                                <p data-lang="en">Years Experience</p>
+                                <p data-lang="th">ปีประสบการณ์</p>
+                                <p data-lang="la">ປີປະສົບການ</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <div class="card-icon mx-auto" style="background: var(--gradient-secondary);">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                </div>
+                                <h4>18</h4>
+                                <p data-lang="en">Provinces Covered</p>
+                                <p data-lang="th">แขวงที่ดูแล</p>
+                                <p data-lang="la">ແຂວງທີ່ດູແລ</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2><i class="fas fa-briefcase"></i> Professional Experience</h2>
-    <ul>
-      <li>2011 (Intern): Policy Bank - Network, Linux & Windows Servers, IT Support</li>
-      <li>2012-2022: IT Support at National Blood Center, Lao Red Cross</li>
-      <li>2023-2025: Contractor at Phu Bia Mining (Admin Safety, Admin Training, Safety Officer, IT Support)</li>
-    </ul>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="section" style="background: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="en">Skills & Expertise</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="th">ทักษะและความเชี่ยวชาญ</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="la">ທັກສະແລະຄວາມຊ່ຽວຊານ</h2>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="skill-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-file-word me-3 text-success" style="font-size: 1.5rem;"></i>
+                            <span class="fw-bold">Microsoft Office</span>
+                            <span class="ms-auto fw-bold text-success">95%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-desktop me-3 text-primary" style="font-size: 1.5rem;"></i>
+                            <span class="fw-bold">Windows</span>
+                            <span class="ms-auto fw-bold text-primary">95%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-server me-3 text-info" style="font-size: 1.5rem;"></i>
+                            <span class="fw-bold">Windows Server</span>
+                            <span class="ms-auto fw-bold text-info">65%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="65%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="skill-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-paint-brush me-3 text-warning" style="font-size: 1.5rem;"></i>
+                            <span class="fw-bold">Canva</span>
+                            <span class="ms-auto fw-bold text-warning">70%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="70%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-code me-3 text-danger" style="font-size: 1.5rem;"></i>
+                            <span class="fw-bold">Programming</span>
+                            <span class="ms-auto fw-bold text-danger">50%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="50%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-item">
+                        <div class="d-flex align-items-center mb-2">
+                            <i class="fas fa-database me-3 text-secondary" style="font-size: 1.5rem;"></i>
+                            <span class="fw-bold">SQL Server</span>
+                            <span class="ms-auto fw-bold text-secondary">50%</span>
+                        </div>
+                        <div class="skill-progress">
+                            <div class="skill-progress-bar" data-width="50%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section>
-    <h2><i class="fas fa-tools"></i> Skills Summary</h2>
-    <p>Microsoft Windows Server</p>
-    <div class="skills-bar"><span style="width: 80%"></span></div>
-    <p>Microsoft Windows</p>
-    <div class="skills-bar"><span style="width: 70%"></span></div>
-    <p>Microsoft Office</p>
-    <div class="skills-bar"><span style="width: 70%"></span></div>
-    <p>SQL Server</p>
-    <div class="skills-bar"><span style="width: 50%"></span></div>
-    <p>Graphic Design (Canva)</p>
-    <div class="skills-bar"><span style="width: 50%"></span></div>
-    <p>Adobe Premiere</p>
-    <div class="skills-bar"><span style="width: 50%"></span></div>
-  </section>
 
-  <section>
-    <h2><i class="fas fa-language"></i> Language Skills</h2>
-    <p>English</p>
-    <div class="skills-bar"><span style="width: 30%"></span></div>
-    <p>Thai</p>
-    <div class="skills-bar"><span style="width: 80%"></span></div>
-  </section>
+    <!-- Certifications Section -->
+    <section id="certifications" class="section">
+        <div class="container">
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="en">Certifications & Training</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="th">ใบรับรองและการฝึกอบรม</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="la">ໃບຢືນຢັນແລະການຝຶກອົບຮົມ</h2>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card-modern">
+                        <h4 class="heading-font mb-4" data-lang="en">Work Experience</h4>
+                        <h4 class="heading-font mb-4" data-lang="th">ประสบการณ์การทำงาน</h4>
+                        <h4 class="heading-font mb-4" data-lang="la">ປະສົບການເຮັດວຽກ</h4>
+                        
+                        <div class="mb-4" data-lang="en">
+                            <div class="d-flex align-items-start">
+                                <div class="card-icon me-3" style="background: var(--gradient-primary);">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">IT Specialist</h5>
+                                    <p class="text-muted mb-1">National Blood Center, Lao Red Cross</p>
+                                    <p class="text-muted mb-2">2012 – 2022</p>
+                                    <p class="small">Studied IT needs of staff, developed database systems, recommended applications, requested servers and connected networks, installed systems, trained 18 provinces.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4" data-lang="th">
+                            <div class="d-flex align-items-start">
+                                <div class="card-icon me-3" style="background: var(--gradient-primary);">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">ผู้เชี่ยวชาญด้าน IT</h5>
+                                    <p class="text-muted mb-1">ศูนย์โลหิตแห่งชาติ, สภากาชาดลาว</p>
+                                    <p class="text-muted mb-2">2012 – 2022</p>
+                                    <p class="small">ศึกษาความต้องการด้าน IT ของเจ้าหน้าที่ พัฒนาระบบฐานข้อมูล แนะนำแอปพลิเคชัน ขอเซิร์ฟเวอร์และเชื่อมต่อเครือข่าย ติดตั้งระบบ ฝึกอบรม 18 แขวง</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4" data-lang="la">
+                            <div class="d-flex align-items-start">
+                                <div class="card-icon me-3" style="background: var(--gradient-primary);">
+                                    <i class="fas fa-user-md"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">ເຈົ້າໜ້າທີ່ໄອທີ</h5>
+                                    <p class="text-muted mb-1">ສູນເລືອດແຫ່ງຊາດ, ສະພາກາຊາດລາວ</p>
+                                    <p class="text-muted mb-2">2012 – 2022</p>
+                                    <p class="small">ສຶກສາຄວາມຕ້ອງການໄອທີ ຂອງພະນັກງານ ພັດທະນາຖານຂໍ້ມູນ ແນະນໍາແອັບ ຂໍເຊີບເວີ ແລະ ເຊື່ອມຕໍ່ລະບົບ ຝຶກອົບຮົມໃນ 18 ແຂວງ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-lang="en">
+                            <div class="d-flex align-items-start">
+                                <div class="card-icon me-3" style="background: var(--gradient-secondary);">
+                                    <i class="fas fa-hard-hat"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Safety Admin & IT Support</h5>
+                                    <p class="text-muted mb-1">Phu Bia Mining Contractor</p>
+                                    <p class="text-muted mb-2">2023 – 2025</p>
+                                    <p class="small">Manage safety/training admin work and provide IT support.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-lang="th">
+                            <div class="d-flex align-items-start">
+                                <div class="card-icon me-3" style="background: var(--gradient-secondary);">
+                                    <i class="fas fa-hard-hat"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">แอดมินความปลอดภัย & IT Support</h5>
+                                    <p class="text-muted mb-1">ผู้รับเหมา Phu Bia Mining</p>
+                                    <p class="text-muted mb-2">2023 – 2025</p>
+                                    <p class="small">ดูแลงานแอดมินด้านความปลอดภัย/อบรม และสนับสนุนด้าน IT</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div data-lang="la">
+                            <div class="d-flex align-items-start">
+                                <div class="card-icon me-3" style="background: var(--gradient-secondary);">
+                                    <i class="fas fa-hard-hat"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold">Admin & IT Support</h5>
+                                    <p class="text-muted mb-1">ຜູ້ຮັບເຫຼົ່າ Phu Bia Mining</p>
+                                    <p class="text-muted mb-2">2023 – 2025</p>
+                                    <p class="small">ຮັບຜິດຊອບວຽກ Admin ຄວາມປອດໄພ ການຝຶກອົບຮົມ ແລະ ສະໜັບສະໜູນໄອທີ</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card-modern">
+                        <h4 class="heading-font mb-4" data-lang="en">Certifications</h4>
+                        <h4 class="heading-font mb-4" data-lang="th">ใบรับรองและการฝึกอบรม</h4>
+                        <h4 class="heading-font mb-4" data-lang="la">ໃບຢືນຢັນແລະການຝຶກອົບຮົມ</h4>
+                        
+                        <div class="row">
+                            <div class="col-12 mb-3" data-lang="en">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-laptop-code me-3 text-success" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">Web Development Certificate</h6>
+                                        <small class="text-muted">Online Course, 2019</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="th">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-laptop-code me-3 text-success" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">ประกาศนียบัตรด้าน Web Development</h6>
+                                        <small class="text-muted">คอร์สออนไลน์, 2019</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="la">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-laptop-code me-3 text-success" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">ໃບປະກາດຢືນຢັນ Web Development</h6>
+                                        <small class="text-muted">ສຶກສາອອນໄລນ໌, 2019</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="en">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-network-wired me-3 text-info" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">IT Support Certificate</h6>
+                                        <small class="text-muted">Microsoft Digital Skills Week, 2020</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="th">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-network-wired me-3 text-info" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">ใบรับรองด้าน IT Support</h6>
+                                        <small class="text-muted">Microsoft Digital Skills Week, 2020</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="la">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-network-wired me-3 text-info" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">ໃບຢືນຢັນດ້ານ IT Support</h6>
+                                        <small class="text-muted">Microsoft Digital Skills Week, 2020</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="en">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-language me-3 text-primary" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">IELTS (Score 6.5)</h6>
+                                        <small class="text-muted">British Council Laos, 2022</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="th">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-language me-3 text-primary" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">IELTS (คะแนนรวม 6.5)</h6>
+                                        <small class="text-muted">British Council Laos, 2022</small>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="col-12 mb-3" data-lang="la">
+                                <div class="d-flex align-items-center p-3 rounded" style="background: var(--light-color);">
+                                    <i class="fas fa-language me-3 text-primary" style="font-size: 1.5rem;"></i>
+                                    <div>
+                                        <h6 class="mb-1 fw-bold">IELTS (ຄະແນນ 6.5)</h6>
+                                        <small class="text-muted">British Council Laos, 2022</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Courses Section -->
+    <section class="section" style="background: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="en">Online Courses</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="th">คอร์สออนไลน์</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="la">ຄໍສອອນໄລນ໌</h2>
+            
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-modern text-center">
+                        <div class="card-icon mx-auto" style="background: var(--gradient-primary);">
+                            <i class="fab fa-facebook"></i>
+                        </div>
+                        <h5 class="fw-bold" data-lang="en">Facebook Creator Training</h5>
+                        <h5 class="fw-bold" data-lang="th">อบรม Facebook Creator</h5>
+                        <h5 class="fw-bold" data-lang="la">ການຝຶກອົບຮົມ Facebook Creator</h5>
+                        <p class="text-muted" data-lang="en">Blueprint Program, 2023</p>
+                        <p class="text-muted" data-lang="th">โปรแกรม Blueprint, 2023</p>
+                        <p class="text-muted" data-lang="la">Blueprint ຈາກ Facebook, 2023</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-modern text-center">
+                        <div class="card-icon mx-auto" style="background: var(--gradient-secondary);">
+                            <i class="fab fa-youtube"></i>
+                        </div>
+                        <h5 class="fw-bold" data-lang="en">YouTube Channel Creation</h5>
+                        <h5 class="fw-bold" data-lang="th">การสร้างช่อง YouTube</h5>
+                        <h5 class="fw-bold" data-lang="la">ການສ້າງຊ່ອງ YouTube</h5>
+                        <p class="text-muted" data-lang="en">Google Creator Academy, 2022</p>
+                        <p class="text-muted" data-lang="th">Google Creator Academy, 2022</p>
+                        <p class="text-muted" data-lang="la">Google Academy, 2022</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-modern text-center">
+                        <div class="card-icon mx-auto" style="background: var(--gradient-accent);">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <h5 class="fw-bold" data-lang="en">TikTok Marketing</h5>
+                        <h5 class="fw-bold" data-lang="th">การตลาด TikTok</h5>
+                        <h5 class="fw-bold" data-lang="la">ການຕະຫຼາດໃນ TikTok</h5>
+                        <p class="text-muted" data-lang="en">TikTok for Pros, 2022</p>
+                        <p class="text-muted" data-lang="th">TikTok for Pros, 2022</p>
+                        <p class="text-muted" data-lang="la">TikTok Professional, 2022</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-modern text-center">
+                        <div class="card-icon mx-auto" style="background: var(--gradient-primary);">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <h5 class="fw-bold" data-lang="en">Instagram Reels</h5>
+                        <h5 class="fw-bold" data-lang="th">Instagram Reels</h5>
+                        <h5 class="fw-bold" data-lang="la">Instagram</h5>
+                        <p class="text-muted" data-lang="en">Meta Training, 2023</p>
+                        <p class="text-muted" data-lang="th">Meta Training, 2023</p>
+                        <p class="text-muted" data-lang="la">Meta Training, 2023</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section">
+        <div class="container">
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="en">Portfolio</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="th">ผลงาน</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="la">ຜົນງານ</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="portfolio-item">
+                        <div class="portfolio-content">
+                            <div class="card-icon mb-3" style="background: var(--gradient-primary);">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h4 class="fw-bold" data-lang="en">Blood Donor Database</h4>
+                            <h4 class="fw-bold" data-lang="th">ระบบฐานข้อมูลผู้บริจาคโลหิต</h4>
+                            <h4 class="fw-bold" data-lang="la">ລະບົບຂໍ້ມູນຜູ້ບໍລິຈາກເລືອດ</h4>
+                            
+                            <p data-lang="en">Used in 18 provinces across Laos</p>
+                            <p data-lang="th">ใช้งานใน 18 แขวงทั่วประเทศลาว</p>
+                            <p data-lang="la">ໃຊ້ງານໃນ 18 ແຂວງ ຂອງປະເທດລາວ</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <span class="badge bg-primary">Database</span>
+                                <span class="badge bg-success">SQL Server</span>
+                                <span class="badge bg-info">System Design</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light" data-lang="en">View Details</button>
+                            <button class="btn btn-light" data-lang="th">ดูรายละเอียด</button>
+                            <button class="btn btn-light" data-lang="la">ເບິ່ງລາຍລະອຽດ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="portfolio-item">
+                        <div class="portfolio-content">
+                            <div class="card-icon mb-3" style="background: var(--gradient-secondary);">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <h4 class="fw-bold" data-lang="en">Safety Training Tracker</h4>
+                            <h4 class="fw-bold" data-lang="th">ระบบติดตามการอบรมความปลอดภัย</h4>
+                            <h4 class="fw-bold" data-lang="la">ລະບົບຕິດຕາມການຝຶກອົບຮົມຄວາມປອດໄພ</h4>
+                            
+                            <p data-lang="en">Excel/Access system to manage staff training records</p>
+                            <p data-lang="th">ระบบ Excel/Access สำหรับจัดการบันทึกการอบรม</p>
+                            <p data-lang="la">ໃຊ້ Excel/Access ສໍາລັບຄວາມປອດໄພພະນັກງານ</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <span class="badge bg-warning">Excel</span>
+                                <span class="badge bg-danger">Access</span>
+                                <span class="badge bg-secondary">Training</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light" data-lang="en">View Details</button>
+                            <button class="btn btn-light" data-lang="th">ดูรายละเอียด</button>
+                            <button class="btn btn-light" data-lang="la">ເບິ່ງລາຍລະອຽດ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="portfolio-item">
+                        <div class="portfolio-content">
+                            <div class="card-icon mb-3" style="background: var(--gradient-accent);">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h4 class="fw-bold" data-lang="en">IT Support Dashboard</h4>
+                            <h4 class="fw-bold" data-lang="th">แดชบอร์ดฝ่ายสนับสนุน IT</h4>
+                            <h4 class="fw-bold" data-lang="la">ແດສບໍຣ໌ຊ່ວຍເຫຼືອ IT</h4>
+                            
+                            <p data-lang="en">Helpdesk dashboard for tracking and resolving IT issues</p>
+                            <p data-lang="th">ระบบแจ้งปัญหาและติดตามการแก้ไข IT</p>
+                            <p data-lang="la">ຕິດຕາມການແກ້ໄຂບັນຫາໄອທີ</p>
+                            
+                            <div class="d-flex flex-wrap gap-2 mt-3">
+                                <span class="badge bg-info">Dashboard</span>
+                                <span class="badge bg-success">Support</span>
+                                <span class="badge bg-primary">Tracking</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-overlay">
+                            <button class="btn btn-light" data-lang="en">View Details</button>
+                            <button class="btn btn-light" data-lang="th">ดูรายละเอียด</button>
+                            <button class="btn btn-light" data-lang="la">ເບິ່ງລາຍລະອຽດ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section" style="background: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="en">Get In Touch</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="th">ติดต่อเรา</h2>
+            <h2 class="section-title heading-font" data-aos="fade-up" data-lang="la">ຕິດຕໍ່ພວກເຮົາ</h2>
+            
+            <div class="row">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <div class="card-modern">
+                        <h4 class="heading-font mb-4" data-lang="en">Contact Information</h4>
+                        <h4 class="heading-font mb-4" data-lang="th">ข้อมูลการติดต่อ</h4>
+                        <h4 class="heading-font mb-4" data-lang="la">ຂໍ້ມູນການຕິດຕໍ່</h4>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon me-3" style="background: var(--gradient-primary);">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold" data-lang="en">Location</h6>
+                                    <h6 class="fw-bold" data-lang="th">ที่อยู่</h6>
+                                    <h6 class="fw-bold" data-lang="la">ທີ່ຢູ່</h6>
+                                    <p class="text-muted mb-0" data-lang="en">Vientiane Capital, Laos</p>
+                                    <p class="text-muted mb-0" data-lang="th">เวียงจันทน์, ลาว</p>
+                                    <p class="text-muted mb-0" data-lang="la">ເມືອງວຽງຈັນ, ປະເທດລາວ</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon me-3" style="background: var(--gradient-secondary);">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold" data-lang="en">Email</h6>
+                                    <h6 class="fw-bold" data-lang="th">อีเมล</h6>
+                                    <h6 class="fw-bold" data-lang="la">ອີເມວ</h6>
+                                    <p class="text-muted mb-0">hongkham.arma@email.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center">
+                                <div class="card-icon me-3" style="background: var(--gradient-accent);">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h6 class="fw-bold" data-lang="en">Phone</h6>
+                                    <h6 class="fw-bold" data-lang="th">โทรศัพท์</h6>
+                                    <h6 class="fw-bold" data-lang="la">ໂທລະສັບ</h6>
+                                    <p class="text-muted mb-0">+856 20 XXXX XXXX</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links mt-4">
+                            <a href="#" class="me-2"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="me-2"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="me-2"><i class="fab fa-github"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card-modern">
+                        <h4 class="heading-font mb-4" data-lang="en">Send Message</h4>
+                        <h4 class="heading-font mb-4" data-lang="th">ส่งข้อความ</h4>
+                        <h4 class="heading-font mb-4" data-lang="la">ສົ່ງຂໍ້ຄວາມ</h4>
+                        
+                        <form>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Your Name" data-lang="en">
+                                <input type="text" class="form-control" placeholder="ชื่อของคุณ" data-lang="th">
+                                <input type="text" class="form-control" placeholder="ຊື່ຂອງທ່ານ" data-lang="la">
+                            </div>
+                            <div class="mb-3">
+                                <input type="email" class="form-control" placeholder="Your Email" data-lang="en">
+                                <input type="email" class="form-control" placeholder="อีเมลของคุณ" data-lang="th">
+                                <input type="email" class="form-control" placeholder="ອີເມວຂອງທ່ານ" data-lang="la">
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" class="form-control" placeholder="Subject" data-lang="en">
+                                <input type="text" class="form-control" placeholder="หัวข้อ" data-lang="th">
+                                <input type="text" class="form-control" placeholder="ຫົວຂໍ້" data-lang="la">
+                            </div>
+                            <div class="mb-3">
+                                <textarea class="form-control" rows="5" placeholder="Your Message" data-lang="en"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="ข้อความของคุณ" data-lang="th"></textarea>
+                                <textarea class="form-control" rows="5" placeholder="ຂໍ້ຄວາມຂອງທ່ານ" data-lang="la"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100" data-lang="en">Send Message</button>
+                            <button type="submit" class="btn btn-primary w-100" data-lang="th">ส่งข้อความ</button>
+                            <button type="submit" class="btn btn-primary w-100" data-lang="la">ສົ່ງຂໍ້ຄວາມ</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <h4 class="heading-font mb-3">Hongkham Suvannavong (Ama)</h4>
+                    <p class="mb-4" data-lang="en">IT Specialist & Digital Solutions Expert</p>
+                    <p class="mb-4" data-lang="th">ผู้เชี่ยวชาญด้าน IT และโซลูชันดิจิทัล</p>
+                    <p class="mb-4" data-lang="la">ຜູ້ຊ່ຽວຊານດ້ານໄອທີ ແລະ ໂຊລູຊັນດິຈິຕອນ</p>
+                    
+                    <div class="social-links mb-4">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                    
+                    <p class="text-muted" data-lang="en">&copy; 2024 Hongkham Suvannavong. All rights reserved.</p>
+                    <p class="text-muted" data-lang="th">&copy; 2024 หงษ์คำ สุวรรณวงศ์. สงวนลิขสิทธิ์.</p>
+                    <p class="text-muted" data-lang="la">&copy; 2024 ຫົງຄຳ ສຸວັນນະວົງ. ສະຫງວນລິຂະສິດ.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+
+        // Language Switcher
+        function switchLanguage(lang) {
+            document.body.className = 'lang-' + lang;
+            
+            // Update active button
+            document.querySelectorAll('.language-switcher .btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Store preference
+            localStorage.setItem('preferred-language', lang);
+        }
+
+        // Load saved language preference
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('preferred-language') || 'en';
+            switchLanguage(savedLang);
+            
+            // Update button state
+            document.querySelector(`[onclick="switchLanguage('${savedLang}')"]`).classList.add('active');
+            document.querySelectorAll('.language-switcher .btn').forEach(btn => {
+                if (btn.textContent.toLowerCase() !== savedLang) {
+                    btn.classList.remove('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Animate skill progress bars
+        function animateSkills() {
+            const skillBars = document.querySelectorAll('.skill-progress-bar');
+            skillBars.forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+
+        // Trigger skill animation when skills section is in view
+        const skillsSection = document.querySelector('#skills');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateSkills();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        if (skillsSection) {
+            observer.observe(skillsSection);
+        }
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+            const isDark = document.body.classList.contains('dark-mode');
+            
+            // Update icon
+            const icon = document.querySelector('.dark-mode-toggle i');
+            icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            
+            // Store preference
+            localStorage.setItem('dark-mode', isDark);
+        }
+
+        // Load dark mode preference
+        if (localStorage.getItem('dark-mode') === 'true') {
+            toggleDarkMode();
+        }
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get current language
+            const currentLang = document.body.className.replace('lang-', '');
+            
+            let message;
+            switch(currentLang) {
+                case 'th':
+                    message = 'ขอบคุณสำหรับข้อความของคุณ! เราจะติดต่อกลับโดยเร็วที่สุด';
+                    break;
+                case 'la':
+                    message = 'ຂອບໃຈສໍາລັບຂໍ້ຄວາມຂອງທ່ານ! ພວກເຮົາຈະຕິດຕໍ່ກັບໄວທີ່ສຸດ';
+                    break;
+                default:
+                    message = 'Thank you for your message! We will get back to you soon.';
+            }
+            
+            alert(message);
+            this.reset();
+        });
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add typing effect to hero text
+        function typeWriter(element, text, speed = 100) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            
+            type();
+        }
+
+        // Initialize typing effect
+        window.addEventListener('load', function() {
+            const heroTitle = document.querySelector('.hero h1');
+            if (heroTitle) {
+                const originalText = heroTitle.textContent;
+                typeWriter(heroTitle, originalText, 150);
+            }
+        });
+    </script>
 </body>
 </html>
+
